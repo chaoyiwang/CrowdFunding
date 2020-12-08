@@ -16,6 +16,6 @@
         <appender-ref ref="STDOUT" />
     </root>
     <!-- 根据特殊需求指定局部日志级别 -->
-    <logger name="org.fall.mapper" level="DEBUG"/>
+    <logger name="org.example.crowdfunding.mapper" level="DEBUG"/>
 </configuration>
 

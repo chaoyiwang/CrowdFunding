@@ -39,6 +39,6 @@
 
     <!--配置与mapper.xml对应的mapper接口的包路径-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="org.fall.mapper"/>
+        <property name="basePackage" value="org.example.crowdfunding.mapper"/>
     </bean>
 </beans>

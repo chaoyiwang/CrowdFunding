@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--配置包扫描-->
-    <context:component-scan base-package="org.fall.mvc"/>
+    <context:component-scan base-package="org.example.mvc"/>
 
     <!--配置视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,7 +25,7 @@
             <props>
                 <!-- <prop key="java.lang.Exception">system-error</prop>-->
                 <!-- 通过xml配置AccessForbiddenException的异常映射 -->
-                <prop key="org.fall.exception.AccessForbiddenException">admin-login</prop>
+                <prop key="org.example.exception.AccessForbiddenException">admin-login</prop>
             </props>
         </property>
     </bean>
@@ -51,7 +51,7 @@
 <!--            <mvc:exclude-mapping path="/admin/login/page.html"/>-->
 <!--            <mvc:exclude-mapping path="/admin/login/logout.html"/>-->
 <!--            <mvc:exclude-mapping path="/admin/login/doLogin.html"/>-->
-<!--            <bean class="org.fall.mvc.interceptor.LoginInterceptor"/>-->
+<!--            <bean class="org.example.mvc.interceptor.LoginInterceptor"/>-->
 <!--        </mvc:interceptor>-->
 <!--    </mvc:interceptors>-->
 
