@@ -15,7 +15,8 @@
     <!--配置AOP-->
     <aop:config>
         <!--配置切入点表达式-->
-        <!--public void org.example.service.impl.adminServiceImpl(Admin admin)-->
+        <!--public void org.example.crowdfunding.service.impl.adminServiceImpl(Admin admin)-->
+        <!--考虑到后面整合SpringSecurity，避免把UserDetailsService加入事务控制，所以让切入点表达式定位到*ServiceImpl-->
         <aop:pointcut id="txPointcut" expression="execution(* *..*ServiceImpl.*(..))"/>
 
         <!--关联事务通知与切入点-->
@@ -24,6 +25,7 @@
 
     <!--配置事务通知-->
     <tx:advice id="txAdvice" transaction-manager="txManager">
+        <!--配置事务属性-->
         <tx:attributes>
             <!--name属性指定当前要配置的事务方法的方法名，符合名字的配置对应规则-->
             <!--查询方法通常设置为只读，便于数据库根据只读属性进行性能优化-->
@@ -40,7 +42,7 @@
                     建议设置：REQUIRES_NEW，表示当前方法必须运行在事务中，如果没有事务，则开启事务，在自己的事务中运行。
                         和 REQUIRED 的区别是就算现在已经有了已开启的事务，也一定要开启自己的事务，避免和其他方法共用同一个事务。
                 -->
-            <!--rollback-for：表示触发什么异常时，进行回滚；默认值：运行时异常，建议设置为运行时异常+编译期异常-->
+            <!--rollback-for：表示触发什么异常时，进行回滚；默认值：运行时异常进行回滚，建议设置为运行时异常+编译期异常时，都进行回滚-->
             <tx:method name="save*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
             <tx:method name="update*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
             <tx:method name="remove*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
@@ -48,7 +50,7 @@
         </tx:attributes>
     </tx:advice>
 
-    <!-- 将BCryptPasswordEncoder装配入IOC容器 -->
-    <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder"/>
+<!--    &lt;!&ndash; 将BCryptPasswordEncoder装配入IOC容器 &ndash;&gt;-->
+<!--    <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder"/>-->
 
 </beans>

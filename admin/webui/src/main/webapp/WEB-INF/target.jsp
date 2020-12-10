@@ -11,7 +11,7 @@
     <title>success</title>
 </head>
 <body>
-    成功进入页面！<br/>
-    ${requestScope.admins}
+    <h1>成功进入页面！</h1>成功进入页面！
+    ${requestScope.adminList}
 </body>
 </html>

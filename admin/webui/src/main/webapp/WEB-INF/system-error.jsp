@@ -1,13 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator_
-  Date: 2020/8/13
-  Time: 21:04
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,11 +22,12 @@
         });
     </script>
 </head>
+
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <div><a class="navbar-brand" href="index.html" style="font-size:32px;">尚筹网-创意产品众筹平台</a></div>
+            <div><a class="navbar-brand" href="index.html" style="font-size:32px;">CrowedFunding - Funding Platform</a></div>
         </div>
     </div>
 </nav>
@@ -43,6 +38,8 @@
     <br/><br/>
     <button style="width:150px;margin: 0 auto;" class="btn btn-lg btn-success btn-block">返回上一步</button>
 </div>
+
 <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>

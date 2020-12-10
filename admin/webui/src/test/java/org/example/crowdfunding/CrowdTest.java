@@ -2,6 +2,7 @@ package org.example.crowdfunding;
 
 import org.example.crowdfunding.entity.Admin;
 import org.example.crowdfunding.mapper.AdminMapper;
+import org.example.crowdfunding.service.api.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -16,13 +17,16 @@ import java.sql.SQLException;
 
 // 类上标记必要的注解，Spring整合Junit
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml","classpath:spring-persist-tx.xml"})
 public class CrowdTest {
     @Autowired
     private DataSource dataSource;
 
     @Autowired
     private AdminMapper adminMapper;
+
+    @Autowired
+    private AdminService adminService;
 
     @Test
     public void testInsertAdmin(){
@@ -48,5 +52,11 @@ public class CrowdTest {
         logger.info("INFO!!!");
         logger.warn("WARN!!!");
         logger.error("ERROR!!!");
+    }
+
+    @Test
+    public void testTx(){
+        Admin admin = new Admin(null, "Jay", "123456", "jaychou", "jay@jay.com", null);
+        adminService.saveAdmin(admin);
     }
 }

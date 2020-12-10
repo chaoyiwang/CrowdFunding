@@ -6,26 +6,24 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--配置包扫描-->
-    <context:component-scan base-package="org.example.mvc"/>
-
-    <!--配置视图解析器-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
+    <context:component-scan base-package="org.example.crowdfunding.mvc"/>
 
     <!--启动注解驱动-->
     <mvc:annotation-driven/>
 
+    <!--配置视图解析器-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
     <!--基于XML的异常映射-->
-
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" id="simpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
-                <!-- <prop key="java.lang.Exception">system-error</prop>-->
+                <prop key="java.lang.Exception">system-error</prop>
                 <!-- 通过xml配置AccessForbiddenException的异常映射 -->
-                <prop key="org.example.exception.AccessForbiddenException">admin-login</prop>
+<!--                <prop key="org.example.exception.AccessForbiddenException">admin-login</prop>-->
             </props>
         </property>
     </bean>
@@ -33,7 +31,7 @@
 
     <!--通过view-controller 来设置一些直接的页面跳转-->
         <!--去登录页面-->
-    <mvc:view-controller path="/admin/login/page.html" view-name="admin-login"/>
+    <mvc:view-controller path="/admin/to/login/page.html" view-name="admin-login"/>
         <!--去登录成功的主页面-->
     <mvc:view-controller path="/admin/main/page.html" view-name="admin-main"/>
         <!--前往注册admin页面-->

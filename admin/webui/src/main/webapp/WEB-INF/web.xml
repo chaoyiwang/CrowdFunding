@@ -6,14 +6,14 @@
 
     <!--配置ContextLoaderListener，加载Spring配置文件-->
     <!--contextConfigLocation需要的内容-->
-<!--    <context-param>-->
-<!--        <param-name>contextConfigLocation</param-name>-->
-<!--        <param-value>classpath:spring-persist-*.xml</param-value>-->
-<!--    </context-param>-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-persist-*.xml</param-value>
+    </context-param>
     <!--将ContextLoaderListener加入容器-->
-<!--    <listener>-->
-<!--        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-<!--    </listener>-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <!--配置CharacterEncodingFilter，解决乱码问题-->
     <!--如果web.xml中存在多个Filter，则此Filter必须作为过滤器链的第一个Filter-->
@@ -25,18 +25,22 @@
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
         </init-param>
-        <!--强制请求进行编码-->
+        <!--强制请求设置字符集编码-->
         <init-param>
             <param-name>forceRequestEncoding</param-name>
             <param-value>true</param-value>
         </init-param>
-        <!--强制响应进行编码-->
+        <!--强制响应设置字符集编码-->
         <init-param>
             <param-name>forceResponseEncoding</param-name>
             <param-value>true</param-value>
         </init-param>
     </filter>
     <!--设置过滤器的拦截的请求的路径-->
+    <!--以下这个Filter执行的顺序要在其他所有Filter前面-->
+    <!--request.setCharacterEncoding(encoding)要求必须在所有request.getParameter()操作前面-->
+    <!--response.setCharacterEncoding(encoding)要求必须在所有response.getWriter()操作前面-->
+    <!--不满足这个顺序要求字符集设定无法生效-->
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -58,20 +62,21 @@
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <!--根据请求的扩展名决定是否交给SpringMVC来处理-->
+        <!--<url-pattern>/</url-pattern>-->
         <url-pattern>*.html</url-pattern>
         <url-pattern>*.json</url-pattern>
     </servlet-mapping>
 
 
-    <!--加入 SpringSecurity 控制权限的 Filter-->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
+<!--    &lt;!&ndash;加入 SpringSecurity 控制权限的 Filter&ndash;&gt;-->
+<!--    <filter>-->
+<!--        <filter-name>springSecurityFilterChain</filter-name>-->
+<!--        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+<!--    </filter>-->
 
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+<!--    <filter-mapping>-->
+<!--        <filter-name>springSecurityFilterChain</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
 
 </web-app>
