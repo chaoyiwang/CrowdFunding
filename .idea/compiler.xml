@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="component" />
-        <module name="webui" />
         <module name="util" />
-        <module name="reverse" />
+        <module name="webui" />
+        <module name="component" />
         <module name="entity" />
+        <module name="reverse" />
       </profile>
     </annotationProcessing>
   </component>
