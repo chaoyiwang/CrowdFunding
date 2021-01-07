@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator_
-  Date: 2020/8/14
-  Time: 14:02
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -36,7 +29,7 @@
 
 <div class="container">
 
-    <form action="admin/to/login.html" method="post" class="form-signin" role="form">
+    <form action="/admin/login/Login.html" method="post" class="form-signin" role="form">
         <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> 用户登录</h2>
         <p>${requestScope.exception.message}</p>
         <p>${SPRING_SECURITY_LAST_EXCEPTION.message}</p>

@@ -27,4 +27,11 @@ public interface AdminMapper {
     int updateByPrimaryKeySelective(Admin record);
 
     int updateByPrimaryKey(Admin record);
+
+    //根据关键字查找用户的方法
+    List<Admin> selectAdminByKeyword(String keyword);
+
+    void saveAdminRoleRelationship(@Param("adminId") Integer adminId, @Param("roleIdList") List<Integer> roleIdList);
+
+    void clearOldRelationship(Integer adminId);
 }

@@ -2,6 +2,7 @@ package org.example.crowdfunding.mvc.config;
 
 import com.google.gson.Gson;
 import org.example.crowdfunding.constant.CrowdFundingConstant;
+import org.example.crowdfunding.exception.LoginFailedException;
 import org.example.crowdfunding.util.CrowdFundingUtil;
 import org.example.crowdfunding.util.ResultEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -35,6 +36,17 @@ public class CrowdFundingExceptionResolver {
                                                    HttpServletRequest request, HttpServletResponse response) throws IOException {
         return commonCode(exception,request,response,"system-error");
 
+    }
+
+    // 触发登录失败异常，则继续返回登陆页面
+    @ExceptionHandler(value = LoginFailedException.class)
+    public ModelAndView resolverLoginFailedException(
+                                                     LoginFailedException exception,
+                                                     HttpServletRequest request,
+                                                     HttpServletResponse response
+    ) throws IOException {
+        String viewName = "admin-login";
+        return commonCode(exception,request,response,viewName);
     }
 
     //整理出的不同异常的可重用代码

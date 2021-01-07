@@ -31,7 +31,7 @@
 
     <!--通过view-controller 来设置一些直接的页面跳转-->
         <!--去登录页面-->
-    <mvc:view-controller path="/admin/to/login/page.html" view-name="admin-login"/>
+    <mvc:view-controller path="/admin/login/page.html" view-name="admin-login"/>
         <!--去登录成功的主页面-->
     <mvc:view-controller path="/admin/main/page.html" view-name="admin-main"/>
         <!--前往注册admin页面-->
@@ -43,14 +43,14 @@
 
 
     <!--在mvc容器中注册拦截器 ： 在使用SpringSecurity后，就要注释掉原来的自定义的拦截器了-->
-<!--    <mvc:interceptors>-->
-<!--        <mvc:interceptor>-->
-<!--            <mvc:mapping path="/**"/>-->
-<!--            <mvc:exclude-mapping path="/admin/login/page.html"/>-->
-<!--            <mvc:exclude-mapping path="/admin/login/logout.html"/>-->
-<!--            <mvc:exclude-mapping path="/admin/login/doLogin.html"/>-->
-<!--            <bean class="org.example.mvc.interceptor.LoginInterceptor"/>-->
-<!--        </mvc:interceptor>-->
-<!--    </mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/admin/login/page.html"/>
+            <mvc:exclude-mapping path="/admin/login/logout.html"/>
+            <mvc:exclude-mapping path="/admin/login/Login.html"/>
+            <bean class="org.example.crowdfunding.mvc.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>
